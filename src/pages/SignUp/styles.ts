@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import { shade } from "polished";
 
@@ -12,13 +12,30 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
+  display: flex;
+  justify-content: center;
+
   width: 100%;
   max-width: 700px;
+`;
 
+const apearFromRight = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  } to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+export const AnimatedContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  animation: ${apearFromRight} 1s;
 
   form {
     margin: 40px 0;
@@ -30,7 +47,7 @@ export const Content = styled.div`
     }
 
     a {
-      color: #f4ede8;
+      color: #888;
       text-decoration: none;
       display: block;
       margin-top: 24px;
@@ -38,7 +55,7 @@ export const Content = styled.div`
       transition: color 0.2s;
 
       &:hover {
-        color: ${shade(0.2, "#f4ede8")};
+        color: ${shade(0.2, "#444")};
       }
     }
   }
